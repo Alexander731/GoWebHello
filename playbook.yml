@@ -1,13 +1,13 @@
 - hosts: localhost
   tasks:
   - name: Deploy the service
-    community.kubernetes.k8s:
+    kubernetes.core.k8s:
       state: present
       definition: "{{ lookup('template', 'service.yml') | from_yaml }}"
       validate_certs: no
       namespace: default
   - name: Deploy the application
-    community.kubernetes.k8s:
+    kubernetes.core.k8s:
       state: present
       validate_certs: no
       namespace: default
