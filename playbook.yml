@@ -1,5 +1,7 @@
 - hosts: localhost
   tasks:
+  - name: Run whoami without become.
+    command: whoami
   - name: Deploy the service
     k8s:
       state: present
