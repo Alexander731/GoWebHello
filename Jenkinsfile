@@ -18,6 +18,7 @@ pipeline {
                 sh 'mkdir -p ${GOPATH}/src/hello-world'
                 // Copy all files in our Jenkins workspace to our project directory.                
                 sh 'cp -r ${WORKSPACE}/* ${GOPATH}/src/hello-world'
+				
                 // Build the app.
                 sh 'go build'               
             }     
@@ -58,7 +59,7 @@ pipeline {
             steps {
                 script{
                     def image_id = registry + ":$BUILD_NUMBER"
-                    sh "ansible-playbook  playbook.yml --extra-vars \"image_id=${image_id}\""
+                    sh "/usr/local/bin/ansible-playbook  playbook.yml --extra-vars \"image_id=${image_id}\""
                 }
             }
         }
