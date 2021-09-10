@@ -63,9 +63,8 @@ pipeline {
 					sh "sed -i s#JUSTIMAGEPLACEHOLDER#${image_id}#g deployment.yml"
 					sh "cat deployment.yml"
 					sh "echo PATH=$PATH"
-					sh "echo SHELL=$SHELL"
-					sh "/usr/local/bin/kubectl apply -f deployment.yml"
-                    sh "/usr/local/bin/kubectl apply -f service.yml"
+					sh "source /var/lib/jenkins/.bash_profile && /usr/local/bin/kubectl apply -f deployment.yml"
+                    sh "source /var/lib/jenkins/.bash_profile &&/usr/local/bin/kubectl apply -f service.yml"
                 }
             }
         }
