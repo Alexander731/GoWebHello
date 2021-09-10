@@ -59,11 +59,13 @@ pipeline {
             steps {
                 script{
                     def image_id = registry + ":$BUILD_NUMBER"
-					sh "bash whoami"
+					sh "whoami"
 					sh "sed -i s#JUSTIMAGEPLACEHOLDER#${image_id}#g deployment.yml"
 					sh "cat deployment.yml"
-					sh "bash /usr/local/bin/kubectl apply -f deployment.yml"
-                    sh "bash /usr/local/bin/kubectl apply -f service.yml"
+					sh "echo PATH=$PATH"
+					sh "echo SHELL=$SHELL"
+					sh "/usr/local/bin/kubectl apply -f deployment.yml"
+                    sh "/usr/local/bin/kubectl apply -f service.yml"
                 }
             }
         }
