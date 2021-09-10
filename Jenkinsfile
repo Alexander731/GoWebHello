@@ -60,8 +60,8 @@ pipeline {
                 script{
                     def image_id = registry + ":$BUILD_NUMBER"
 					sh "sed -i s#JUSTIMAGEPLACEHOLDER#${image_id}#g deployment.yml"
-					sh "kubectl apply -f deployment.yml"
-                    sh "kubectl apply -f service.yml"
+					sh "/usr/local/bin/kubectl apply -f deployment.yml"
+                    sh "/usr/local/bin/kubectl apply -f service.yml"
                 }
             }
         }
