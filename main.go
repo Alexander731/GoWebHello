@@ -10,7 +10,7 @@ type Server struct{}
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "text/plain")
-	w.Write([]byte(`Good-bye, Ansible!`))
+	w.Write([]byte(`Hello, World!`))
 }
 
 func main() {
